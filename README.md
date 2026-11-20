@@ -1,6 +1,6 @@
 # Standardiste vocal IA pour artisan du bâtiment
 
-**Un projet de Johanne Pamegne** — automatisation et agents IA · [Portfolio](https://johnnyrayane237.github.io) · [LinkedIn](https://www.linkedin.com/in/johanne-pamegne-2672b63b4)
+**Un projet de Johanne Pamegne** — automatisation et agents IA · [Portfolio](https://johanne.vorchex.tech) · [LinkedIn](https://www.linkedin.com/in/johanne-pamegne-2672b63b4)
 
 Une assistante téléphonique qui décroche quand l'artisan est sur un chantier. Elle prend, déplace et annule les rendez-vous, repère les urgences et prévient le patron. Chaque soir, elle lui envoie un récapitulatif de la journée.
 
@@ -126,6 +126,6 @@ Ensuite, importer le circuit dans n8n, créer les identifiants (Anthropic, ntfy,
 ---
 
 **Johanne Pamegne** — automatisation et agents IA (VorcheX)
-[Portfolio](https://johnnyrayane237.github.io) · [LinkedIn](https://www.linkedin.com/in/johanne-pamegne-2672b63b4) · [GitHub](https://github.com/Johnnyrayane237)
+[Portfolio](https://johanne.vorchex.tech) · [LinkedIn](https://www.linkedin.com/in/johanne-pamegne-2672b63b4) · [GitHub](https://github.com/Johnnyrayane237)
 
 Je cherche un poste en automatisation. Si ce projet vous parle, écrivez-moi sur LinkedIn.
