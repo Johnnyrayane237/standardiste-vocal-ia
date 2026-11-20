@@ -6,6 +6,8 @@ Une assistante téléphonique qui décroche quand l'artisan est sur un chantier.
 
 Démonstration réalisée sous ma marque **VorcheX** pour une entreprise **fictive**, *Plomberie Garnier*. Tout a été testé de bout en bout les 19 et 20 novembre 2026 : appels vocaux, conversations écrites et exécutions réelles du circuit n8n.
 
+Le cas de démonstration est un plombier, mais rien n'est propre à la plomberie : les horaires, la durée des rendez-vous et les délais se règlent dans [config-client.json](config-client.json), et les cas d'urgence dans les [consignes de l'agent](agent-retell/consignes.md). Le même système convient à tout métier qui prend ses rendez-vous par téléphone : cabinet, garage, salon, agence…
+
 ## Le problème de départ
 
 Un plombier sur un chantier ne peut pas décrocher. Chaque appel manqué peut être un client perdu, et une vraie urgence (fuite, plus de chauffage) peut attendre des heures. Je voulais une réponse **utile dès le premier appel**, sans changer les habitudes de l'artisan : il garde son téléphone, et l'assistante lui envoie seulement ce qui demande son attention.
