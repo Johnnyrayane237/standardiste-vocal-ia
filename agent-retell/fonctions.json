@@ -1,0 +1,149 @@
+{
+  "_note": "Six fonctions personnalisées Retell (POST, attendre la réponse), toutes à la même adresse : https://n8n.vorchex.tech/webhook/vx-batiment-fonctions?cle={{cle_fonctions}} — la valeur de cle_fonctions se colle dans les variables par défaut de l'agent (voir CLE_FONCTIONS dans .env).",
+  "verifier_creneaux": {
+    "description": "Cherche les prochains créneaux libres dans l'agenda de Plomberie Garnier. À appeler après avoir noté le problème, l'adresse, le nom et le numéro.",
+    "parametres": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Jour souhaité par l'appelant au format AAAA-MM-JJ, seulement s'il en a donné un."
+        },
+        "partie_journee": {
+          "type": "string",
+          "enum": [
+            "matin",
+            "apres-midi",
+            "indifferent"
+          ],
+          "description": "Demi-journée souhaitée, ou indifferent."
+        }
+      },
+      "required": []
+    },
+    "message_attente": "Je regarde le planning, un instant."
+  },
+  "reserver_rdv": {
+    "description": "Réserve le créneau choisi par l'appelant. À appeler seulement après son accord sur un créneau donné par verifier_creneaux.",
+    "parametres": {
+      "type": "object",
+      "properties": {
+        "nom": {
+          "type": "string",
+          "description": "Nom de l'appelant."
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Numéro de téléphone confirmé chiffre par chiffre."
+        },
+        "adresse": {
+          "type": "string",
+          "description": "Adresse complète de l'intervention."
+        },
+        "motif": {
+          "type": "string",
+          "description": "Le problème ou la demande, en une phrase."
+        },
+        "debut": {
+          "type": "string",
+          "description": "Valeur debut exacte du créneau choisi, format AAAA-MM-JJTHH:MM."
+        }
+      },
+      "required": [
+        "nom",
+        "telephone",
+        "adresse",
+        "motif",
+        "debut"
+      ]
+    },
+    "message_attente": "Je bloque ce créneau pour vous."
+  },
+  "signaler_urgence": {
+    "description": "Prévient immédiatement le dirigeant d'une urgence (fuite importante, dégât des eaux, plus de chauffage avec personnes fragiles, odeur de gaz, débordement).",
+    "parametres": {
+      "type": "object",
+      "properties": {
+        "nom": {
+          "type": "string",
+          "description": "Nom de l'appelant."
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Numéro pour le rappeler."
+        },
+        "adresse": {
+          "type": "string",
+          "description": "Adresse de l'urgence."
+        },
+        "description": {
+          "type": "string",
+          "description": "L'urgence décrite en une phrase."
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "message_attente": "Je préviens tout de suite le responsable."
+  },
+  "trouver_rdv": {
+    "description": "Retrouve les rendez-vous à venir d'un client à partir de son numéro de téléphone. À appeler quand l'appelant veut déplacer ou annuler un rendez-vous.",
+    "parametres": {
+      "type": "object",
+      "properties": {
+        "telephone": {
+          "type": "string",
+          "description": "Numéro donné lors de la réservation, confirmé chiffre par chiffre. Laisser vide pour utiliser le numéro de l'appelant."
+        }
+      },
+      "required": []
+    },
+    "message_attente": "Je retrouve votre rendez-vous, un instant."
+  },
+  "annuler_rdv": {
+    "description": "Annule un rendez-vous retrouvé avec trouver_rdv. À appeler seulement après une confirmation claire de l'appelant.",
+    "parametres": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifiant du rendez-vous, tel que renvoyé par trouver_rdv (ne jamais le lire à voix haute)."
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Numéro donné lors de la réservation, confirmé chiffre par chiffre. Laisser vide pour utiliser le numéro de l'appelant."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "message_attente": "J'annule ce rendez-vous."
+  },
+  "deplacer_rdv": {
+    "description": "Déplace un rendez-vous retrouvé avec trouver_rdv vers un nouveau créneau proposé par verifier_creneaux et accepté par l'appelant.",
+    "parametres": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifiant du rendez-vous, tel que renvoyé par trouver_rdv (ne jamais le lire à voix haute)."
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Numéro donné lors de la réservation, confirmé chiffre par chiffre. Laisser vide pour utiliser le numéro de l'appelant."
+        },
+        "debut": {
+          "type": "string",
+          "description": "Valeur debut exacte du nouveau créneau choisi, format AAAA-MM-JJTHH:MM."
+        }
+      },
+      "required": [
+        "id",
+        "debut"
+      ]
+    },
+    "message_attente": "Je déplace votre rendez-vous."
+  }
+}
